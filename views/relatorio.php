@@ -56,7 +56,7 @@
             <a class="home" href="inicio.html">Início/</a>
             <a class="link-relatorio" href="relatorio.html">Relatório/</a>
         </div>
-        <h1 class="filtrar">Relatório</h1>
+        <h1 class="relator">Relatório</h1>
         <h1 class="relat">Relatório</h1>
         <section class="tabela">
             <table id="myTable" class="display responsive nowrap"  style="width:100%">
@@ -76,18 +76,29 @@
                 <tbody>
                     <?php
                         require_once('../config/dbConnect.php');
-                        $info_user = "SELECT id, nome, cpf, email, stts, "
+                        $infos = "SELECT r.id, r.solicitante, r.email, u.nome, r.stts, m.descr, r.dt, r.hr_i, r.hr_f FROM reserva AS r, usuario AS u, material AS m, resmat AS rm WHERE r.id_us = u.id AND r.id = rm.id_res AND m.id = rm.id_mat";
+                        $todasInfos = $dbh->query($infos);
+                        $listaInfos = $todasInfos->fetchAll(PDO::FETCH_ASSOC);
+                        if(count($listaInfos) > 0){
+                            foreach($listaInfos as $info){
+                                $status = $info['stts'] == 1 ? 'Concluído' : 'Pendente';
                     ?>
                     <tr>
-                        <td class="info">01</td>
-                        <td class="info">Nome nome nome nome fksdjhfjsdhfjdsfjhsdfjk</td>
-                        <td class="info">senac321@petrolina.pe.senac.br</td>
-                        <td class="info">Nome nome</td>
-                        <td><p class="concl">Concluído</p></td>
-                        <td>Placa mãe</td>
-                        <td>00/00/0000</td>
-                        <td class="info">00:00</td>
-                        <td class="info">00:00</td>
+                        <td><?= $info['id'] ?></td>
+                        <td><?= $info['solicitante'] ?></td>
+                        <td><?= $info['email'] ?></td>
+                        <td><?= $info['nome'] ?></td>
+                        <td><?= $status ?></td>
+                        <td><?= $info['descr'] ?></td>
+                        <td><?= $info['dt'] ?></td>
+                        <td><?= $info['hr_i'] ?></td>
+                        <td><?= $info['hr_f'] ?></td>
+                        <?php         
+                                }
+                            }else{
+                                echo'Nenhuma informação encontrada';
+                            }
+                        ?>
                     </tr>
                 </tbody>
             </table>

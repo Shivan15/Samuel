@@ -151,7 +151,7 @@ main {
     color: #9A9A9A;
     text-decoration: none;
 }
-.filtrar{
+.relator{
     font-size: 32px; /*tamanho da fonte*/
     font-weight: normal;  
     font-family: "Lexend";
@@ -227,7 +227,7 @@ tr:nth-child(even) {
         width: 80%;
         margin-top: -5%;    
     }
-    .filtrar{
+    .relator{
         display: none;
     }
     .caminho{
