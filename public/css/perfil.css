@@ -114,6 +114,12 @@ main {
 .menu_sand{
     display: none;
 }
+
+.voltar {
+    text-decoration: none;
+    color: #003282;
+}
+
 @media screen and (max-width: 800px){
     body{
         line-height: 1.2em;

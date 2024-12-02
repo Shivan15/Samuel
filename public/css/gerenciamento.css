@@ -168,7 +168,11 @@ main {
     color: #9A9A9A;
     text-decoration: none;
 }
-
+.conteudo-botaoadd-tabela{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 .section1 {
     display: flex;
     gap: 1vw;
@@ -435,43 +439,25 @@ tbody{
 }
 tr {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     border: 0px solid;
     height: 8vh;
     width: 100%;
     
 }
+.table-head{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
 tr .text {
     font-size: 19px;
-    width: 25%;
+    width: 35%;
     padding: 1%;
     border: 0px solid;
     display: flex;
     text-align: center;
-}
-
-
-.carregamento_g {
-    width: 20vw;
-    height: 4vh;
-    border-radius: 10px;
-    background-color: #A9A9A9;
-}
-
-.carregamento1 {
-    background-color: #1CC500;
-    width: 100%;
-    height: 4vh;
-    border-radius: 10px;
-}
-
-.carregamento2 {
-    background-color: #1CC500;
-    width: 90%;
-    height: 4vh;
-    border-radius: 10px;
 }
 
 
@@ -644,7 +630,7 @@ table .td_resum {
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 430px) {
     body {
         line-height: 1.2em;
     }
@@ -654,7 +640,9 @@ table .td_resum {
         display: none;
         z-index: 1;
     }
-
+    main{
+        margin-top: 0;
+    }
     .menu_sand {
         display: initial;
         cursor: pointer;
@@ -679,9 +667,26 @@ table .td_resum {
     .caminho {
         display: none;
     }
-
+    .conteudo-botaoadd-tabela{
+        flex-direction: column-reverse;
+        width: 100%;
+        
+    }
     .section1 {
-        margin-top: -16.4vh;
+        margin-left: 0;
+        flex-direction: column;
+        margin-top: 30%;
+        height: 15vh;
+    }
+
+    .section2 {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1%;
+        margin-left: 5%;    
+      
     }
 
     .filtrar {
@@ -713,11 +718,9 @@ table .td_resum {
     }
 
     .add_prod {
-        position: absolute;
-        margin-top: 70vh;
-        margin-right: -28vw;
         width: 50vw;
         gap: 1.4vw;
+        align-self: center;
     }
 
     .add_prod p {
@@ -726,7 +729,7 @@ table .td_resum {
 
     .dialog_addprod,
     .dialog_editar {
-        width: 80%;
+        width: 100%;
         height: 75.5vh;
     }
 
@@ -796,47 +799,48 @@ table .td_resum {
         margin-top: 5%;
         display: flex;
         justify-content: center;
+        width: 100%;
     }
-
+    .tabela-g{
+        width: 100%;
+    }
     table {
-        width: 85vw;
+        width: 100%;
+    }
+    .table-head{
+        width: 100%;
     }
 
     tr {
-        margin: 3vh 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 
     tr .text {
         font-size: 14px;
-        width: 35%;
+        width: 100%;
     }
-
+    .botao_desativar, .botao_detalhes, .botao_editar{
+        width: 50%;
+    }
+    .tabela-body-linha{
+        margin: 0;
+    }
     .carregamento_g {
         width: 28vw;
     }
 
     table .td_btn_edit_switch {
-        visibility: hidden;
-        position: absolute;
-        flex-direction: column;
-        background-color: #fff;
-        right: 12%;
-        top: 26%;
-        width: 36%;
+        flex-direction: row;
+        width: 60%;
         height: 15%;
-        margin: 0;
-        padding: 2%;
-        z-index: 1;
-        border: 1px solid #050C9C;
+
         border-radius: 10px;
     }
 
     table .td_btn_edit_switch.clicado {
         visibility: visible;
-    }
-
-    table .botao_editar {
-        width: 66%;
     }
 
     table .td_resum {

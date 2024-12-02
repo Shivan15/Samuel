@@ -57,379 +57,162 @@
             <a class="home" href="inicio.html">Início/</a>
             <a class="gerenciamento" href="gerenciamento.html">Gerenciamento/</a>
         </div>
-        <section class="section1">
-            <button class="add_prod">
-                <i class="ri-add-large-line"></i>
-                Adicionar Produto
-            </button>
-        </section>
-        <dialog class="dialog_addprod">
-            <nav>
-                <h3>Adicionar Produto</h3>
-                <i class="fa-solid fa-xmark x_add_prod"></i>
-            </nav>
-            <form class="campos">
-                <div class="prod_cat">
-                    <div class="div_prod">
-                        <h5>Produto</h5>
-                        <input type="text" class="input_nome" placeholder="Ex.: Cabo de rede">
-                    </div>
-                    <div class="div_cat">
-                        <h5>Categoria</h5>
-                        <div class="search_select_box">
-                            <select data-live-search="true">
-                                <option disabled selected>Pesquisar</option>
-                                <option>Máquina</option>
-                                <option>Equipamentos</option>
-                                <option>Robótica</option>
-                                <option>Impressora</option>
-                            </select>
+        <div class="conteudo-botaoadd-tabela">
+            <section class="section1">
+                <button class="add_prod">
+                    <i class="ri-add-large-line"></i>
+                    Adicionar Produto
+                </button>
+            </section>
+            <dialog class="dialog_addprod">
+                <nav>
+                    <h3>Adicionar Produto</h3>
+                    <i class="fa-solid fa-xmark x_add_prod"></i>
+                </nav>
+                <form class="campos">
+                    <div class="prod_cat">
+                        <div class="div_prod">
+                            <h5>Produto</h5>
+                            <input type="text" class="input_nome" placeholder="Ex.: Cabo de rede">
+                        </div>
+                        <div class="div_cat">
+                            <h5>Categoria</h5>
+                            <div class="search_select_box">
+                                <select class="selectpicker" data-live-search="true">
+                                    <option disabled selected>Pesquisar</option>
+                                    <option>Máquina</option>
+                                    <option>Equipamentos</option>
+                                    <option>Robótica</option>
+                                    <option>Impressora</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="desc">
-                    <h5>Descrição</h5>
-                    <input type="text" class="input_desc" placeholder="Ex. : Para conexão Wi-Fi">
-                </div>
-                <div class="quant_uni">
-                    <div class="div_quant">
-                        <h5>Quantidade</h5>
-                        <input type="text" class="input_quant" placeholder="Ex. : 200">
+                    <div class="desc">
+                        <h5>Descrição</h5>
+                        <input type="text" class="input_desc" placeholder="Ex. : Para conexão Wi-Fi">
                     </div>
-                    <div class="div_uni">
-                        <h5>Unidade de Medida</h5>
-                        <div class="search_select_box">
-                            <select data-live-search="true">
-                                <option disabled selected>Pesquisar</option>
-                                <option>Decímetros</option>
-                                <option>Milímetros</option>
-                                <option>Centímetros</option>
-                                <option>Metros</option>
-                            </select>
+                    <div class="quant_uni">
+                        <div class="div_quant">
+                            <h5>Quantidade</h5>
+                            <input type="text" class="input_quant" placeholder="Ex. : 200">
+                        </div>
+                        <div class="div_uni">
+                            <h5>Unidade de Medida</h5>
+                            <div class="search_select_box">
+                                <select data-live-search="true">
+                                    <option disabled selected>Pesquisar</option>
+                                    <option>Decímetros</option>
+                                    <option>Milímetros</option>
+                                    <option>Centímetros</option>
+                                    <option>Metros</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="div_bot">
-                    <button class="botao_add">Adicionar</button>
-                </div>
-            </form>
-        </dialog>
-        <section class="section2">
-            <div class="tabela-g">
-                <table id="minhaTabela" class="table table-responsive table-striped table-bordered tabela-gerenciamento">
-                    <thead>
-                            <tr>
-                                <th>Itens</th>
-                                <th>Ações</th>
+                    <div class="div_bot">
+                        <button class="botao_add">Adicionar</button>
+                    </div>
+                </form>
+            </dialog>
+            <section class="section2">
+                <div class="tabela-g">
+                    <table id="minhaTabela" class="table table-responsive table-striped table-bordered tabela-gerenciamento">
+                        <thead>
+                                <tr class="table-head">
+                                    <th>Itens</th>
+                                    <th>Ações</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tabela-body-linha">
+                                <td class="text">Cabo de rede</td>
+                                <td class="td_btn_edit_switch">
+                                    <a class="botao_detalhes" title="Detalhes">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="botao_editar" title="Editar">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="botao_desativar" title="Excluir" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>    <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>    <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                        <tr>
-    
-                            <td class="text">Cabo de rede</td>
-                            <td class="td_btn_edit_switch">
-                                <a class="botao_detalhes">
-                                    <i class="fa-solid fa-eye"></i>
-                                    Detalhes
-                                </a>
-                                <a class="botao_editar">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    Editar
-                                </a>
-                                <a class="botao_desativar">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Desativar
-                                </a>
-                               
-                            </td>
-                            
-                        </tr>
-                    </tbody>
-                    <tfoot>
+                            <tr class="tabela-body-linha">
+                                <td class="text">Cabo de rede</td>
+                                <td class="td_btn_edit_switch">
+                                    <a class="botao_detalhes" title="Detalhes">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="botao_editar" title="Editar">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="botao_desativar" title="Excluir" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                   
+                                </td>
+                                
+                            </tr>
+                            <tr class="tabela-body-linha">
+                                <td class="text">Cabo de rede</td>
+                                <td class="td_btn_edit_switch">
+                                    <a class="botao_detalhes" title="Detalhes">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="botao_editar" title="Editar">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="botao_desativar" title="Excluir" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                   
+                                </td>
+                                
+                            </tr>
+                            <tr class="tabela-body-linha">
+                                <td class="text">Cabo de rede</td>
+                                <td class="td_btn_edit_switch">
+                                    <a class="botao_detalhes" title="Detalhes">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="botao_editar" title="Editar">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="botao_desativar" title="Excluir" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                   
+                                </td>
+                                
+                            </tr>
+                            <tr class="tabela-body-linha">
+                                <td class="text">Cabo de rede</td>
+                                <td class="td_btn_edit_switch">
+                                    <a class="botao_detalhes" title="Detalhes">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="botao_editar" title="Editar">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="botao_desativar" title="Excluir" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                   
+                                </td>
+                                
+                            </tr>
 
-                    </tfoot>
-                    
-                </table>
-            </div>
-        </section>
+                        </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </div>
+      
         <dialog class="dialog_confirm">
             <div class="dialog_conteudo">
                 <div class="div_dialog_mensagem">
