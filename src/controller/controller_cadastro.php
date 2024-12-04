@@ -38,9 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 // Executar a query
                 if ($stmt->execute([$cpf, $senhaHash, $nome, $status, $data_nasc, $id_tipo, $email])) {
+                    $lastId = $dbh->lastInsertId();
                     // Sucesso: usuário cadastrado
-                    header('Location: ../../views/login.php');
-
+                    session_start();
+                    $_SESSION["Nome_user"] = $nome; // Já temos o nome na variável $nome
+                    $_SESSION["id_user"] = $lastId;
+                    header('Location: ../../views/inicio.php');
+                    exit();
                 } else {
                     // Erro ao inserir
                     header('Location: ../../views/cadastro.php?error=insert_failed');

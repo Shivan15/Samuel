@@ -105,16 +105,6 @@ input:focus {
     outline: 0;
 }
 
-
-.labell {
-    display: flex;
-    align-items: center;
-    gap: 4%;
-    font-family: "Inter";
-    font-size: 14px;
-    margin-top: 3%;
-}
-
 .error {
     font-size: 14px;
     color: #f73e3e;
@@ -131,7 +121,7 @@ input:focus {
     font-weight: bold;
     color: white;
     background-color: #050C9C;
-    margin-top: -1vh;
+    margin-top: 1vh;
     cursor: pointer;
 }
 

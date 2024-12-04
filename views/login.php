@@ -48,9 +48,6 @@
                     }
                 }
                 ?>
-                <label class="labell">
-                    <input type="checkbox" id="rememberMe">Lembre-se de mim
-                </label>
             </div>
             <button class="entrar" type="submit">ENTRAR</button>
             <a class="esq-senha" href="redefinir_senha.html">Esqueceu a senha?</a>
