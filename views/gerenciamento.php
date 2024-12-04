@@ -26,12 +26,12 @@
     <sidebar class="sidebar">
         <img src="../public/imgs/bars-solid.svg" alt="" class="menu_sand">
         <nav class="side_items">
-            <a href="inicio.html">
+            <a href="inicio.php">
                 <i class="fa-solid fa-house"></i>
                 <span>Início</span>
             </a>
             <hr>
-            <a href="gerenciamento.html">
+            <a href="gerenciamento.php">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Gerenciamento</span>
             </a>
@@ -41,12 +41,12 @@
                 <span>Reservas</span>
             </a>
             <hr>
-            <a href="relatorio.html">
+            <a href="relatorio.php">
                 <i class="fa-solid fa-clipboard"></i>
                 <span>Relatório</span>
             </a>
             <hr>
-            <a href="perfil.html">
+            <a href="perfil.php">
                 <i class="fa-solid fa-circle-user"></i>
                 <span>Perfil</span>
             </a>
@@ -80,10 +80,21 @@
                             <div class="search_select_box">
                                 <select class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
-                                    <option>Máquina</option>
-                                    <option>Equipamentos</option>
-                                    <option>Robótica</option>
-                                    <option>Impressora</option>
+                                <?php
+                                    require_once('../config/dbConnect.php');
+                                    $opcoes_categoria = "SELECT id, descr FROM categoria ORDER BY descr ASC";
+                                    $result_categoria = $dbh->query($opcoes_categoria);
+                                    $listaOpcoes_categoria = $result_categoria->fetchAll(PDO::FETCH_ASSOC);
+                                    if(count($listaOpcoes_categoria) > 0){
+                                        foreach($listaOpcoes_categoria as $opcao_categoria){
+                            ?>
+                                    <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
+                                    <?php         
+                                        }
+                                    }else{
+                                        echo'Nenhuma categoria encontrada';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -102,10 +113,20 @@
                             <div class="search_select_box">
                                 <select class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
-                                    <option>Decímetros</option>
-                                    <option>Milímetros</option>
-                                    <option>Centímetros</option>
-                                    <option>Metros</option>
+                                <?php
+                                    $opcoes_uni_med = "SELECT id, descr FROM uni_med ORDER BY descr ASC";
+                                    $result_uni_med = $dbh->query($opcoes_uni_med);
+                                    $listaOpcoes_uni_med = $result_uni_med->fetchAll(PDO::FETCH_ASSOC);
+                                    if(count($listaOpcoes_uni_med) > 0){
+                                        foreach($listaOpcoes_uni_med as $opcao_uni_med){
+                                ?>  
+                                    <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
+                                    <?php
+                                        }
+                                    }else{
+                                        echo 'Nenhuma unidade de medida encontrada';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -125,8 +146,15 @@
                                 </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $materiais = 'SELECT descr FROM material';
+                                $todosMat = $dbh->query($materiais);
+                                $listaMat = $todosMat->fetchAll(PDO::FETCH_ASSOC);
+                                if (count($listaMat) > 0){
+                                    foreach($listaMat as $mat){
+                            ?>
                             <tr class="tabela-body-linha">
-                                <td class="text">Cabo de rede</td>
+                                <td class="text"><?=$mat['descr']?></td>
                                 <td class="td_btn_edit_switch">
                                     <a class="botao_detalhes" title="Detalhes">
                                         <i class="fa-solid fa-eye"></i>
@@ -138,72 +166,13 @@
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
+                                <?php
+                                        }
+                                    }else{
+                                        echo'Nenhum material encontrado';
+                                    }
+                                ?>
                             </tr>
-                            <tr class="tabela-body-linha">
-                                <td class="text">Cabo de rede</td>
-                                <td class="td_btn_edit_switch">
-                                    <a class="botao_detalhes" title="Detalhes">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="botao_editar" title="Editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="botao_desativar" title="Excluir" >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                   
-                                </td>
-                                
-                            </tr>
-                            <tr class="tabela-body-linha">
-                                <td class="text">Cabo de rede</td>
-                                <td class="td_btn_edit_switch">
-                                    <a class="botao_detalhes" title="Detalhes">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="botao_editar" title="Editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="botao_desativar" title="Excluir" >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                   
-                                </td>
-                                
-                            </tr>
-                            <tr class="tabela-body-linha">
-                                <td class="text">Cabo de rede</td>
-                                <td class="td_btn_edit_switch">
-                                    <a class="botao_detalhes" title="Detalhes">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="botao_editar" title="Editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="botao_desativar" title="Excluir" >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                   
-                                </td>
-                                
-                            </tr>
-                            <tr class="tabela-body-linha">
-                                <td class="text">Cabo de rede</td>
-                                <td class="td_btn_edit_switch">
-                                    <a class="botao_detalhes" title="Detalhes">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="botao_editar" title="Editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="botao_desativar" title="Excluir" >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                   
-                                </td>
-                                
-                            </tr>
-
                         </tbody>
                         <tfoot>
                             
@@ -240,10 +209,17 @@
                         <div class="search_select_box">
                             <select class="selectpicker" data-live-search="true">
                                 <option disabled selected>Pesquisar</option>
-                                <option>Máquina</option>
-                                <option>Equipamentos</option>
-                                <option>Robótica</option>
-                                <option>Impressora</option>
+                            <?php
+                                if(count($listaOpcoes_categoria) > 0){
+                                    foreach($listaOpcoes_categoria as $opcao_categoria){
+                            ?>
+                                <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
+                                <?php         
+                                    }
+                                }else{
+                                    echo'Nenhuma categoria encontrada';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -262,10 +238,17 @@
                         <div class="search_select_box">
                             <select class="selectpicker" data-live-search="true">
                                 <option disabled selected>Pesquisar</option>
-                                <option>Decímetros</option>
-                                <option>Milímetros</option>
-                                <option>Centímetros</option>
-                                <option>Metros</option>
+                            <?php
+                                if(count($listaOpcoes_uni_med) > 0){
+                                    foreach($listaOpcoes_uni_med as $opcao_uni_med){
+                            ?>  
+                                <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
+                                <?php
+                                    }
+                                }else{
+                                    echo 'Nenhuma unidade de medida encontrada';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
