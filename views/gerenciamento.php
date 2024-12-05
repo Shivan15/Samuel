@@ -162,9 +162,9 @@
                                     <a class="botao_detalhes" title="Detalhes">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <button class="botao_editar" title="Editar">
+                                    <a class="botao_editar" title="Editar">
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
+                                    </a>
                                     <a class="botao_desativar" title="Excluir" >
                                         <i class="fa-solid fa-trash"></i>
                                     </a>

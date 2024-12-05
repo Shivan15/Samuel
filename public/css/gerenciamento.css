@@ -480,15 +480,12 @@ tr .text {
     height: 2.50vh;
     border-radius: 500px;
     border: none;
-    gap: 1%;
     cursor: pointer;
     font-size: 15px;
     color: #fff;
     left: 2px;
     gap: 10%;
     padding: 2.5%;
-    
-   
 }
 .botao_detalhes {
     display: flex;

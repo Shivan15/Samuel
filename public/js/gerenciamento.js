@@ -28,7 +28,7 @@ const modal_edit = document.querySelector(".dialog_editar");
 const exit_add_prod = document.querySelector(".x_add_prod");
 const exit_edit = document.querySelector(".x_edit");
 //background escuro
-const fundo = document.querySelector('.div_dialog_escuro')
+const fundo = document.querySelector('.div_dialog_escuro');
 
 //mostrar modais
 
