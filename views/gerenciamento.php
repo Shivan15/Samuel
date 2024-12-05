@@ -80,21 +80,10 @@
                             <div class="search_select_box">
                                 <select class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
-                                <?php
-                                    require_once('../config/dbConnect.php');
-                                    $opcoes_categoria = "SELECT id, descr FROM categoria ORDER BY descr ASC";
-                                    $result_categoria = $dbh->query($opcoes_categoria);
-                                    $listaOpcoes_categoria = $result_categoria->fetchAll(PDO::FETCH_ASSOC);
-                                    if(count($listaOpcoes_categoria) > 0){
-                                        foreach($listaOpcoes_categoria as $opcao_categoria){
-                                ?>
-                                    <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
-                                    <?php         
-                                        }
-                                    }else{
-                                        echo'Nenhuma categoria encontrada';
-                                    }
-                                    ?>
+                                    <option>Máquina</option>
+                                    <option>Equipamentos</option>
+                                    <option>Robótica</option>
+                                    <option>Impressora</option>
                                 </select>
                             </div>
                         </div>
