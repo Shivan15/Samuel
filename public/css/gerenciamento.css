@@ -630,7 +630,7 @@ table .td_resum {
     display: none;
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 800px) {
     body {
         line-height: 1.2em;
     }

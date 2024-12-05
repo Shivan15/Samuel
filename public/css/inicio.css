@@ -60,15 +60,14 @@ body {
 
 .div_nome_user{
     position: absolute;
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    justify-content: center;
+    left: 15%;
+    top: 14vh;
     z-index: 999;
 }
 
 .nome_exibir{
-    color: red;
+    font-size: 20px;
+    color: #003282;
     z-index: 9999;
 }
 

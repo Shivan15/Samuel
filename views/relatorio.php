@@ -96,8 +96,6 @@
                         <td><?= $info['hr_f'] ?></td>
                         <?php         
                                 }
-                            }else{
-                                echo'Nenhuma informação encontrada';
                             }
                         ?>
                     </tr>

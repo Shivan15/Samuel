@@ -47,7 +47,7 @@
         session_start(); // Inicia a sessão no início de cada página
         // Exibe o nome do usuário, se estiver definido na sessão
         if (isset($_SESSION['Nome_user'])) {
-            echo "<p class='nome_exibir'>{$_SESSION['Nome_user']}</p>";
+            echo "<p class='nome_exibir'>Olá, {$_SESSION['Nome_user']}!</p>";
         } else {
             echo "<p class='nome_exibir'>Usuário não encontrado.</p>";
         }
