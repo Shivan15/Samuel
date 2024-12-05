@@ -86,12 +86,11 @@
                                     $result_categoria = $dbh->query($opcoes_categoria);
                                     $listaOpcoes_categoria = $result_categoria->fetchAll(PDO::FETCH_ASSOC);
                                     if(count($listaOpcoes_categoria) > 0){
-                                        foreach($listaOpcoes_categoriaefogjdfngiluehgfç9wdufnsdigjefb as $opcao_categoria){
-<<<<<<< HEAD
+                                        foreach($listaOpcoes_categoria as $opcao_categoria){
+
                                 ?>
-=======
-                            ?>
->>>>>>> b7d4677730e0e6ab4564de6cdb19c61ec315b129
+
+
                                     <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
                                     <?php         
                                         }
@@ -163,9 +162,9 @@
                                     <a class="botao_detalhes" title="Detalhes">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a class="botao_editar" title="Editar">
+                                    <button class="botao_editar" title="Editar">
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
+                                    </button>
                                     <a class="botao_desativar" title="Excluir" >
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
