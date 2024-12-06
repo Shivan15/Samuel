@@ -27,8 +27,8 @@ const modal_edit = document.querySelector(".dialog_editar");
 // Botões de saída
 const exit_add_prod = document.querySelector(".x_add_prod");
 const exit_edit = document.querySelector(".x_edit");
-//background escuro
-const fundo = document.querySelector('.div_dialog_escuro')
+// Background escuro
+const fundo = document.querySelector('.div_dialog_escuro');
 
 // Mostrar modal de adicionar produto
 btn_add_prod.onclick = () => {
@@ -38,11 +38,81 @@ btn_add_prod.onclick = () => {
 
 // Mostrar modal de edição (para todos os botões)
 btn_edit.forEach((button) => {
-  button.onclick = () => {
-    modal_edit.showModal();
-    fundo.classList.toggle('escuro_ativado');
+  button.onclick = async () => {
+    const idProduto = button.dataset.id; // Pega o ID do botão
+
+    // Busca os dados do produto usando a API
+    try {
+      const response = await fetch(`../../src/controller/controller_editar_prod.php?id=${idProduto}`);
+      const produto = await response.json();
+      console.log(produto)
+
+      if (produto) {
+        // Preenche os campos do modal com os dados do produto
+        document.querySelector('.input_nome2').value = produto.nome;
+        document.querySelector('.input_desc2').value = produto.material_descr;
+        document.querySelector('.input_quant2').value = produto.qtd;
+        document.querySelector('.botao_edit').dataset.id = idProduto; // Define o ID no botão "Salvar"
+        document.querySelector('.cat').value = produto.categoria_descr;
+        document.querySelector('.u_m').value = produto.unidade_descr;
+      }
+
+      // Mostra o modal de edição
+      modal_edit.showModal();
+      fundo.classList.toggle('escuro_ativado');
+    } catch (error) {
+      console.error("Erro ao buscar produto:", error);
+      alert("Erro ao carregar os dados do produto.");
+    }
   };
 });
+
+// Botão para salvar as alterações
+const btnSave = document.querySelector(".botao_edit");
+
+btnSave.onclick = async () => {
+  const idProduto = btnSave.dataset.id; // Obtém o ID do produto
+  const nome = document.querySelector('.input_nome2').value;
+  const descr = document.querySelector('.input_desc2').value;
+  const qtd = document.querySelector('.input_quant2').value;
+  const cat = document.querySelector('.cat').value;
+  const uni_med = document.querySelector('.u_m').value;
+
+  // Cria o objeto com os dados atualizados
+  const dados = {
+    id: idProduto,
+    nome: nome,
+    descr: descr,
+    qtd: qtd,
+
+  };
+
+  try {
+    const response = await fetch(`../../src/controller/controller_editar_prod.php`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(dados).toString(),
+    });
+
+    const resultado = await response.json();
+
+    if (response.ok) {
+      alert(resultado.message || "Produto atualizado com sucesso!");
+      modal_edit.close();
+      fundo.classList.remove('escuro_ativado');
+      // Atualizar a interface ou recarregar a página, se necessário
+      location.reload();
+    } else {
+      alert(resultado.message || "Erro ao atualizar o produto.");
+    }
+  } catch (error) {
+    console.error("Erro ao salvar alterações:", error);
+    alert("Erro ao salvar alterações do produto.");
+  }
+};
+
 
 // Esconder modais
 exit_add_prod.onclick = () => {
@@ -54,6 +124,7 @@ exit_edit.onclick = () => {
   modal_edit.close();
   fundo.classList.remove('escuro_ativado');
 };
+
 
 // Fechar com Escape
 document.addEventListener('keydown', function (event) {

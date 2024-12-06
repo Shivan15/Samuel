@@ -150,21 +150,21 @@
                         </thead>
                         <tbody>
                             <?php
-                                $materiais = 'SELECT descr FROM material';
+                                $materiais = 'SELECT nome, id FROM material ORDER BY descr ASC';
                                 $todosMat = $dbh->query($materiais);
                                 $listaMat = $todosMat->fetchAll(PDO::FETCH_ASSOC);
                                 if (count($listaMat) > 0){
-                                    foreach($listaMat as $mat){
+                                    foreach($listaMat as $mat){ 
                             ?>
                             <tr class="tabela-body-linha">
-                                <td class="text"><?=$mat['descr']?></td>
+                                <td class="text"><?=$mat['nome']?></td>
                                 <td class="td_btn_edit_switch">
                                     <a class="botao_detalhes" title="Detalhes">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a class="botao_editar" title="Editar">
+                                    <button class="botao_editar" data-id="<?= $mat['id'] ?>" title="Editar">
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
+                                    </button>
                                     <a class="botao_desativar" title="Excluir" >
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
@@ -210,8 +210,7 @@
                     <div class="div_cat2">
                         <h5>Categoria</h5>
                         <div class="search_select_box">
-                            <select class="selectpicker" data-live-search="true">
-                                <option disabled selected>Pesquisar</option>
+                            <select class="selectpicker cat" data-live-search="true">
                             <?php
                                 if(count($listaOpcoes_categoria) > 0){
                                     foreach($listaOpcoes_categoria as $opcao_categoria){
@@ -239,8 +238,7 @@
                     <div class="div_uni2">
                         <h5>Unidade de Medida</h5>
                         <div class="search_select_box">
-                            <select class="selectpicker" data-live-search="true">
-                                <option disabled selected>Pesquisar</option>
+                            <select class="selectpicker u_m" data-live-search="true">
                             <?php
                                 if(count($listaOpcoes_uni_med) > 0){
                                     foreach($listaOpcoes_uni_med as $opcao_uni_med){
@@ -278,7 +276,7 @@
     <!-- Incluir o JS do DataTables -->
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="../public/js/gerenciamento.js"></script>
-
+    
 
 
 
