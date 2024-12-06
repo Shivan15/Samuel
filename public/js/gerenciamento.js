@@ -18,44 +18,52 @@ document.querySelector('.menu_sand').addEventListener('click', classToggle);
 document.addEventListener('click', handleClickOutside);
 
 
-//botões variáveis
+// Botões
 const btn_add_prod = document.querySelector(".add_prod");
-const btn_edit = document.querySelector(".botao_editar");
-//modais variáveis
+const btn_edit = document.querySelectorAll(".botao_editar");
+// Modais
 const modal_add_prod = document.querySelector(".dialog_addprod");
 const modal_edit = document.querySelector(".dialog_editar");
-//saida variáveis
+// Botões de saída
 const exit_add_prod = document.querySelector(".x_add_prod");
 const exit_edit = document.querySelector(".x_edit");
 //background escuro
-const fundo = document.querySelector('.div_dialog_escuro');
+const fundo = document.querySelector('.div_dialog_escuro')
 
-//mostrar modais
-
+// Mostrar modal de adicionar produto
 btn_add_prod.onclick = () => {
-  modal_add_prod.showModal()
-  fundo.classList.toggle('escuro_ativado')
-}
-btn_edit.onclick = () => {
-  modal_edit.showModal()
-  fundo.classList.toggle('escuro_ativado')
-}
-//esconder modais
+  modal_add_prod.showModal();
+  fundo.classList.toggle('escuro_ativado');
+};
 
+// Mostrar modal de edição (para todos os botões)
+btn_edit.forEach((button) => {
+  button.onclick = () => {
+    modal_edit.showModal();
+    fundo.classList.toggle('escuro_ativado');
+  };
+});
+
+// Esconder modais
 exit_add_prod.onclick = () => {
-  modal_add_prod.close()
-  fundo.classList.remove('escuro_ativado')
-}
-exit_edit.onclick = () => {
-  modal_edit.close()
-  fundo.classList.remove('escuro_ativado')
-}
+  modal_add_prod.close();
+  fundo.classList.remove('escuro_ativado');
+};
 
+exit_edit.onclick = () => {
+  modal_edit.close();
+  fundo.classList.remove('escuro_ativado');
+};
+
+// Fechar com Escape
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
+    modal_add_prod.close();
+    modal_edit.close();
     fundo.classList.remove('escuro_ativado');
   }
 });
+
 
 function selectInput(event) {
   const inputClicado = event.target
