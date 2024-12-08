@@ -4,7 +4,7 @@ require_once '../../config/dbConnect.php';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
-        $query = $dbh->prepare("SELECT m.id, m.qtd, m.nome, m.descr AS material_descr, c.descr AS categoria_descr, u.descr AS unidade_descr FROM material m LEFT JOIN categoria c ON m.id_cat = c.id LEFT JOIN uni_med u ON m.id_uni_med = u.id WHERE m.id = :id");
+        $query = $dbh->prepare("SELECT * FROM material WHERE id = :id");
         $query->bindParam(':id', $id, PDO::PARAM_INT);
         $query->execute();
         $produto = $query->fetch(PDO::FETCH_ASSOC);

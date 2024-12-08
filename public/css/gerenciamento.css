@@ -18,7 +18,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 20vh;    
+    width: 20vh;
     /* Ajuste a largura conforme necessário */
     background-color: #f5f5f5;
     /* Cor de fundo da barra lateral */
@@ -168,17 +168,38 @@ main {
     color: #9A9A9A;
     text-decoration: none;
 }
-.conteudo-botaoadd-tabela{
+
+.conteudo-botaoadd-tabela {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
+
 .section1 {
     display: flex;
     gap: 1vw;
     align-self: center;
     margin-top: 3%;
     margin-left: 65%;
+}
+
+.alert_div {
+    position: absolute;
+    left: 44%;
+    top: 18vh;
+    z-index: 999;
+}
+
+.alert {
+    font-size: 15px;
+}
+
+.alert-error {
+    color: red;
+}
+
+.alert-success {
+    color: green;
 }
 
 .add_prod {
@@ -217,23 +238,17 @@ main {
 }
 
 .dialog_addprod,
-.dialog_editar {
+.dialog_editar,
+.dialog_detalhes {
     width: 50%;
     height: 60vh;
     border: none;
     border-radius: 1.5rem;
 }
 
-.dialog_filtrar {
-    width: 36%;
-    height: 50vh;
-    border: none;
-    border-radius: 1.5rem;
-}
-
 .dialog_addprod nav,
 .dialog_editar nav,
-.dialog_filtrar nav {
+.dialog_detalhes nav {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -254,7 +269,7 @@ nav h3 {
 
 .campos,
 .campos2,
-.campos_filtrar {
+.campos3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,7 +281,9 @@ nav h3 {
 .prod_cat,
 .quant_uni,
 .prod_cat2,
-.quant_uni2 {
+.quant_uni2,
+.prod_cat3,
+.quant_uni3 {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -278,8 +295,8 @@ nav h3 {
 .div_cat,
 .div_prod2,
 .div_cat2,
-.div_filtrar_categoria,
-.div_filtrar_uni_med {
+.div_prod3,
+.div_cat3 {
     height: 100%;
 }
 
@@ -310,7 +327,13 @@ nav h3 {
 .input_quant,
 .input_nome2,
 .input_desc2,
-.input_quant2 {
+.input_quant2,
+.input_nome3,
+.input_desc3,
+.input_quant3,
+.input_cat3,
+.input_uni_med3,
+.input_id {
     width: 18vw;
     height: 4vh;
     border-radius: 10px;
@@ -324,74 +347,15 @@ nav h3 {
 .input_desc2 {
     width: 39.2vw;
 }
-
-.div_filtrar_quantidade_stts {
-    display: flex;
-    flex-direction: row;
-    gap: 4vw;
+.input_desc3 {
+    width: 38.2vw;
 }
-
-.div_min_max {
-    display: flex;
-    flex-direction: row;
-    gap: 2vw;
-}
-
-.div_min_max .div_min,
-.div_min_max .div_max {
-    display: flex;
-    flex-direction: column;
-}
-
-.div_min_max label {
-    font-size: 12px;
-    color: #656565;
-}
-
-.min,
-.max {
-    width: 50px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid #D9D9D9;
-
-}
-
-.div_stts {
-    height: 6.4vh;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 1.5vw;
-}
-
-.div_filtrar_stts {
-    display: flex;
-    flex-direction: column;
-}
-
-.div_stts_a,
-.div_stts_i {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5vw;
-}
-
-.div_stts_a label,
-.div_stts_i label {
-    margin-top: 0.5vh;
-}
-
-.div_bot,
-.div_bot2 {
-    display: flex;
-    justify-content: center;
-    padding-top: 5%;
+.input_id {
+    width: 8vw;
 }
 
 .botao_add,
-.botao_edit,
-.btn_filtrar {
+.botao_edit {
     color: #fff;
     display: flex;
     align-items: center;
@@ -427,25 +391,30 @@ nav h3 {
 table {
     width: 50vw;
 }
-thead, tbody{
+
+thead,
+tbody {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 0px solid;
 }
-tbody{
+
+tbody {
     height: 35vh;
 }
+
 tr {
     display: flex;
     align-items: center;
     border: 0px solid;
     height: 8vh;
     width: 100%;
-    
+
 }
-.table-head{
+
+.table-head {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -461,7 +430,7 @@ tr .text {
 }
 
 
-.td_btn_edit_switch {
+.td_btns {
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -470,7 +439,7 @@ tr .text {
     border: none;
     gap: 6%;
     color: #fff;
-    }
+}
 
 .botao_editar {
     display: flex;
@@ -487,6 +456,7 @@ tr .text {
     gap: 10%;
     padding: 2.5%;
 }
+
 .botao_detalhes {
     display: flex;
     justify-content: center;
@@ -502,10 +472,11 @@ tr .text {
     left: 2px;
     gap: 10%;
     padding: 2.5%;
-    
-    
-   
+
+
+
 }
+
 .botao_desativar {
     display: flex;
     justify-content: center;
@@ -514,56 +485,24 @@ tr .text {
     height: 2.50vh;
     border-radius: 500px;
     border: none;
-    gap: 1px;
     cursor: pointer;
     font-size: 15px;
     color: #fff;
     left: 2px;
     gap: 10%;
     padding: 2.5%;
-    
+
 }
-.table-bordered td{
+
+.table-bordered td {
     border: none;
 }
+
 .botao_editar i {
     font-size: 16px;
     color: #fff;
     border: 0px solid;
-    
-}
 
-
-.div_switch .toggle {
-    position: relative;
-    width: 60px;
-    height: 30px;
-    background-color: #CECECE;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    cursor: pointer;
-    border: 0px solid;
-
-}
-
-.div_switch .toggle .toggle_button {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: left 0.55s;
-    left: 5px;
-}
-
-.div_switch .toggle.ativo {
-    background-color: #E68E19;
-}
-
-.div_switch .toggle.ativo .toggle_button {
-    left: 30px;
 }
 
 .dialog_confirm {
@@ -623,9 +562,6 @@ tr .text {
     border-right: 1px solid #050C9C;
 }
 
-table .td_resum {
-    display: none;
-}
 
 @media screen and (max-width: 800px) {
     body {
@@ -637,9 +573,11 @@ table .td_resum {
         display: none;
         z-index: 1;
     }
-    main{
+
+    main {
         margin-top: 0;
     }
+
     .menu_sand {
         display: initial;
         cursor: pointer;
@@ -664,11 +602,13 @@ table .td_resum {
     .caminho {
         display: none;
     }
-    .conteudo-botaoadd-tabela{
+
+    .conteudo-botaoadd-tabela {
         flex-direction: column-reverse;
         width: 100%;
-        
+
     }
+
     .section1 {
         margin-left: 0;
         flex-direction: column;
@@ -682,36 +622,8 @@ table .td_resum {
         justify-content: center;
         align-items: center;
         margin-top: 1%;
-        margin-left: 5%;    
-      
-    }
+        margin-left: 5%;
 
-    .filtrar {
-        position: absolute;
-        margin-top: 70vh;
-        margin-left: -66vw;
-        width: 24vw;
-        gap: 1vw;
-    }
-
-    .filtrar p {
-        font-size: 14px;
-    }
-
-    .filtrar .seta_baixo {
-        display: none;
-    }
-
-    .div_pesquisar {
-        width: 75%;
-    }
-
-    .lupa {
-        margin-left: 3%;
-    }
-
-    .pesq {
-        padding-left: 14%;
     }
 
     .add_prod {
@@ -728,11 +640,6 @@ table .td_resum {
     .dialog_editar {
         width: 100%;
         height: 75.5vh;
-    }
-
-    .dialog_filtrar {
-        width: 70%;
-        height: 60vh;
     }
 
     nav h3 {
@@ -778,8 +685,7 @@ table .td_resum {
     }
 
     .botao_add,
-    .botao_edit,
-    .btn_filtrar {
+    .botao_edit {
         width: 26vw;
     }
 
@@ -798,13 +704,16 @@ table .td_resum {
         justify-content: center;
         width: 100%;
     }
-    .tabela-g{
+
+    .tabela-g {
         width: 100%;
     }
+
     table {
         width: 100%;
     }
-    .table-head{
+
+    .table-head {
         width: 100%;
     }
 
@@ -818,17 +727,22 @@ table .td_resum {
         font-size: 14px;
         width: 100%;
     }
-    .botao_desativar, .botao_detalhes, .botao_editar{
+
+    .botao_desativar,
+    .botao_detalhes,
+    .botao_editar {
         width: 50%;
     }
-    .tabela-body-linha{
+
+    .tabela-body-linha {
         margin: 0;
     }
+
     .carregamento_g {
         width: 28vw;
     }
 
-    table .td_btn_edit_switch {
+    table .td_btns {
         flex-direction: row;
         width: 60%;
         height: 15%;
@@ -836,18 +750,8 @@ table .td_resum {
         border-radius: 10px;
     }
 
-    table .td_btn_edit_switch.clicado {
+    table .td_btns.clicado {
         visibility: visible;
-    }
-
-    table .td_resum {
-        display: initial;
-        width: 16px;
-        height: 10px;
-    }
-
-    table .td_resum.clicked {
-        z-index: 2;
     }
 
     table .resum {

@@ -17,16 +17,32 @@ function handleClickOutside(event) {
 document.querySelector('.menu_sand').addEventListener('click', classToggle);
 document.addEventListener('click', handleClickOutside);
 
+function showMessage() {
+    const message = document.getElementById('message');
+        
+    if (message) {
+        const messageType = message.getAttribute('data-type');
+            
+        // Aguardar 4 segundos (4000 milissegundos) antes de esconder a mensagem
+        setTimeout(function() {
+            message.style.display = 'none';
+        }, 4000);
+    }
+}
+window.onload = showMessage;
 
 // Botões
 const btn_add_prod = document.querySelector(".add_prod");
 const btn_edit = document.querySelectorAll(".botao_editar");
+const btn_detalhes = document.querySelectorAll(".botao_detalhes");
 // Modais
 const modal_add_prod = document.querySelector(".dialog_addprod");
 const modal_edit = document.querySelector(".dialog_editar");
+const modal_detalhes = document.querySelector(".dialog_detalhes");
 // Botões de saída
 const exit_add_prod = document.querySelector(".x_add_prod");
 const exit_edit = document.querySelector(".x_edit");
+const exit_detalhes = document.querySelector(".x_detalhes");
 // Background escuro
 const fundo = document.querySelector('.div_dialog_escuro');
 
@@ -50,11 +66,9 @@ btn_edit.forEach((button) => {
       if (produto) {
         // Preenche os campos do modal com os dados do produto
         document.querySelector('.input_nome2').value = produto.nome;
-        document.querySelector('.input_desc2').value = produto.material_descr;
+        document.querySelector('.input_desc2').value = produto.descr;
         document.querySelector('.input_quant2').value = produto.qtd;
         document.querySelector('.botao_edit').dataset.id = idProduto; // Define o ID no botão "Salvar"
-        document.querySelector('.cat').value = produto.categoria_descr;
-        document.querySelector('.u_m').value = produto.unidade_descr;
       }
 
       // Mostra o modal de edição
@@ -75,8 +89,6 @@ btnSave.onclick = async () => {
   const nome = document.querySelector('.input_nome2').value;
   const descr = document.querySelector('.input_desc2').value;
   const qtd = document.querySelector('.input_quant2').value;
-  const cat = document.querySelector('.cat').value;
-  const uni_med = document.querySelector('.u_m').value;
 
   // Cria o objeto com os dados atualizados
   const dados = {
@@ -86,6 +98,7 @@ btnSave.onclick = async () => {
     qtd: qtd,
 
   };
+  console.log(dados);
 
   try {
     const response = await fetch(`../../src/controller/controller_editar_prod.php`, {
@@ -112,6 +125,45 @@ btnSave.onclick = async () => {
     alert("Erro ao salvar alterações do produto.");
   }
 };
+
+// Selecionar botões de detalhes
+btn_detalhes.forEach((button) => {
+  button.addEventListener('click', function () {
+      const materialId = this.getAttribute('data-id');
+
+      // Fazer requisição AJAX para obter detalhes do material
+      fetch(`./../src/controller/controller_detalhes_prod.php?id=${materialId}`)
+          .then(response => response.json())
+          .then(data => {
+              if (data.error) {
+                  alert(data.error); // Exibir erro caso ocorra
+                  return;
+              }
+
+              // Preencher o modal com os dados retornados
+              document.querySelector('.input_id').value = materialId; // Preenche o campo ID
+              document.querySelector('.input_nome3').value = data.nome || '';
+              document.querySelector('.input_cat3').value = data.categoria || 'Não especificada';
+              document.querySelector('.input_desc3').value = data.descricao || '';
+              document.querySelector('.input_quant3').value = data.quantidade || '0';
+              document.querySelector('.input_uni_med3').value = data.unidade || 'Não especificada';
+
+              // Exibir o modal
+              modal_detalhes.showModal();
+              fundo.style.display = 'block';
+          })
+          .catch(error => {
+              console.error('Erro ao buscar detalhes do material:', error);
+          });
+  });
+});
+
+
+// Fechar modal de detalhes
+exit_detalhes.addEventListener('click', () => {
+  modal_detalhes.close();
+  fundo.style.display = 'none';
+});
 
 
 // Esconder modais
@@ -147,36 +199,24 @@ function selectInput(event) {
 }
 
 
-let toggle = document.querySelector('.toggle');
+let desativarBtns = document.querySelectorAll('.botao_desativar');
 let dialog = document.querySelector('.dialog_confirm');
 let dialogMessage = document.querySelector('.dialog_mensagem');
 let confirmBtn = document.querySelector('.btn_confirm');
 let cancelBtn = document.querySelector('.btn_cancel');
 
-toggle.onclick = () => {
-  let isActive = toggle.classList.contains('ativo');
-  dialogMessage.textContent = isActive ? "Deseja desativar o switch?" : "Deseja ativar o switch?";
-  dialog.showModal();
+// Adicionando o evento para cada botão de desativar
+desativarBtns.forEach((btn) => {
+    btn.onclick = () => {
+        dialog.showModal();
+        dialogMessage.textContent = "Deseja desativar o item?";
 
-  confirmBtn.onclick = () => {
-    toggle.classList.toggle('ativo');
-    dialog.close();
-  };
+        confirmBtn.onclick = () => {
+            dialog.close();
+        };
 
-  cancelBtn.onclick = () => {
-    dialog.close();
-  };
-};
-
-$(document).ready(function () {
-  $('.search_select_box select').selectpicker();
-})
-
-let resum = document.querySelector('.td_resum');
-let btn_edit_switch = document.querySelector('.td_btn_edit_switch');
-let div_switch = document.querySelector('.div_switch');
-
-resum.onclick = () => {
-  resum.classList.add('clicked')
-  btn_edit_switch.classList.toggle('clicado');
-}
+        cancelBtn.onclick = () => {
+            dialog.close();
+        };
+    };
+});

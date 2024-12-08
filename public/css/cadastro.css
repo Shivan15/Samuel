@@ -107,6 +107,12 @@ input:focus {
 	margin: 22% auto;
 }
 
+.error-message {
+	color: red;
+	padding-left: 2%;
+	margin: 0;
+}
+
 button {
 	font-family: 'Inter';
 	font-weight: bold;
@@ -369,6 +375,11 @@ button:hover {
 	.img-input{
 		margin-left: 5vw;
 		margin-top: 3.7vh;
+	}
+
+	.error-message {
+		font-size: 13px;
+		padding-left: 8%;
 	}
 
     button {

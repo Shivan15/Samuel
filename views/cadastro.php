@@ -14,32 +14,6 @@
     <div class="triangulo-azul"></div>
     <main class="container">
         <h1 class="titulo">CADASTRO</h1>
-        
-        <?php if (isset($_GET['error'])): ?>
-            <div class="error-message">
-                <?php
-                switch ($_GET['error']) {
-                    case 'invalid_cpf':
-                        echo "CPF inválido. Por favor, insira um CPF válido.";
-                        break;
-                    case 'empty':
-                        echo "Todos os campos devem ser preenchidos.";
-                        break;
-                    case 'user_exists':
-                        echo "Usuário já cadastrado.";
-                        break;
-                    case 'insert_failed':
-                        echo "Falha ao inserir o usuário. Tente novamente.";
-                        break;
-                    case 'db_error':
-                        echo "Erro no banco de dados. Tente novamente mais tarde.";
-                        break;
-                    default:
-                        echo "";
-                }
-                ?>
-            </div>
-        <?php endif; ?>
 
         <!-- Adicionando a tag <form> com método POST -->
         <form action="../src/controller/controller_cadastro.php" method="POST">
@@ -72,6 +46,31 @@
                     </div>
                     <input type="email" class="email" id="email" name="email" placeholder="Ex.: senac321@petrolina.pe.senac.br" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                 </div>
+                <?php if (isset($_GET['error'])): ?>
+            <div class="error-message">
+                <?php
+                switch ($_GET['error']) {
+                    case 'invalid_cpf':
+                        echo "CPF inválido. Por favor, insira um CPF válido.";
+                        break;
+                    case 'empty':
+                        echo "Todos os campos devem ser preenchidos.";
+                        break;
+                    case 'user_exists':
+                        echo "Usuário já cadastrado.";
+                        break;
+                    case 'insert_failed':
+                        echo "Falha ao inserir o usuário. Tente novamente.";
+                        break;
+                    case 'db_error':
+                        echo "Erro no banco de dados. Tente novamente mais tarde.";
+                        break;
+                    default:
+                        echo "";
+                }
+                ?>
+            </div>
+        <?php endif; ?>
                 
                 <button class="botao-cadastro" type="submit">CRIAR CONTA</button>
             </div>

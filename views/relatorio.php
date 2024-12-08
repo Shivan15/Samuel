@@ -25,27 +25,27 @@
     <div class="sidebar">
         <img src="../public/imgs/bars-solid.svg" alt="" class="menu_sand">
         <nav class="side_items">
-            <a href="inicio.html">
+            <a href="inicio.php">
                 <i class="fa-solid fa-house"></i>
                 <span>Início</span>
             </a>
             <hr>
-            <a href="gerenciamento.html">
+            <a href="gerenciamento.php">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Gerenciamento</span>
             </a>
             <hr>
-            <a href="reservas.html">
+            <a href="reservas.php">
                 <i class="fa-solid fa-table-list"></i>
                 <span>Reservas</span>
             </a>
             <hr>
-            <a href="relatorio.html">
+            <a href="relatorio.php">
                 <i class="fa-solid fa-clipboard"></i>
                 <span>Relatório</span>
             </a>
             <hr>
-            <a href="perfil.html">
+            <a href="perfil.php">
                 <i class="fa-solid fa-circle-user"></i>
                 <span>Perfil</span>
             </a>
@@ -53,18 +53,18 @@
     </div>
     <main class="relatorio">
         <div class="caminho">
-            <a class="home" href="inicio.html">Início/</a>
-            <a class="link-relatorio" href="relatorio.html">Relatório/</a>
+            <a class="home" href="inicio.php">Início/</a>
+            <a class="link-relatorio" href="relatorio.php">Relatório/</a>
         </div>
         <h1 class="relator">Relatório</h1>
         <h1 class="relat">Relatório</h1>
         <section class="tabela">
-            <table id="myTable" class="display responsive nowrap"  style="width:100%">
+            <table id="myTable" class="table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Solicitante</th>
-                        <th>E-mail</th>                     
+                        <th>E-mail</th>
                         <th>Responsável</th>
                         <th>Status</th>
                         <th>Material</th>
@@ -75,33 +75,43 @@
                 </thead>
                 <tbody>
                     <?php
-                        require_once('../config/dbConnect.php');
-                        session_start();
-                        $infos = "SELECT r.id, r.solicitante, r.email, u.nome, r.stts, m.descr, r.dt, r.hr_i, r.hr_f FROM reserva AS r, usuario AS u, material AS m, resmat AS rm WHERE r.id_us = u.id AND r.id = rm.id_res AND m.id = rm.id_mat";
-                        $todasInfos = $dbh->query($infos);
-                        $listaInfos = $todasInfos->fetchAll(PDO::FETCH_ASSOC);
-                        if(count($listaInfos) > 0){
-                            foreach($listaInfos as $info){
-                                $status = $info['stts'] == 1 ? 'Concluído' : 'Pendente';
+                    require_once('controller_relatorio.php'); // Incluindo o controlador
+
+                    // Chama a função para atualizar o status
+                    atualizarStatusReservas();
+
+                    // Chama a função para obter as reservas
+                    $listaInfos = obterReservas();
+
+                    if (count($listaInfos) > 0) {
+                        foreach ($listaInfos as $info) {
+                            // Ajuste do texto de status
+                            $status = $info['stts'];  // O status já é retornado corretamente
+
+                            // Formatar a data
+                            $data = (new DateTime($info['dt']))->format('d/m/Y');
                     ?>
                     <tr>
                         <td><?= $info['id'] ?></td>
                         <td><?= $info['solicitante'] ?></td>
                         <td><?= $info['email'] ?></td>
-                        <td><?= $info['nome'] ?></td>
+                        <td><?= $info['nome_usuario'] ?></td>
                         <td><?= $status ?></td>
-                        <td><?= $info['descr'] ?></td>
-                        <td><?= $info['dt'] ?></td>
+                        <td><?= $info['nome_material'] ?></td>
+                        <td><?= $data ?></td>
                         <td><?= $info['hr_i'] ?></td>
                         <td><?= $info['hr_f'] ?></td>
-                        <?php         
-                                }
-                            }
-                        ?>
                     </tr>
+                    <?php
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </section>
+
+
+        <div class="end"></div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>

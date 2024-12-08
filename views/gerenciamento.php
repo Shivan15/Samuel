@@ -59,6 +59,22 @@
         </div>
         <div class="conteudo-botaoadd-tabela">
             <section class="section1">
+                <div class="alert_div">
+                <?php
+                    session_start(); // Iniciar a sessão para acessar as variáveis de sessão
+                    // Exibir a mensagem de erro se houver
+                    if (isset($_SESSION['error_message'])) {
+                        echo "<p id='message' class='alert alert-error' data-type='error'> {$_SESSION['error_message']} </p>";
+                        unset($_SESSION['error_message']); // Limpar a mensagem após exibi-la
+                    }
+                    // Exibir a mensagem de sucesso se houver
+                    if (isset($_SESSION['success_message'])) {
+                        echo "<p id='message' class='alert alert-success' data-type='success'> {$_SESSION['success_message']} </p>";
+                        unset($_SESSION['success_message']); // Limpar a mensagem após exibi-la
+                    }
+                ?>
+                </div>
+            
                 <button class="add_prod">
                     <i class="ri-add-large-line"></i>
                     Adicionar Produto
@@ -69,16 +85,16 @@
                     <h3>Adicionar Produto</h3>
                     <i class="fa-solid fa-xmark x_add_prod"></i>
                 </nav>
-                <form class="campos">
+                <form action="../src/controller/controller_cadastro_prod.php" method="POST" class="campos">
                     <div class="prod_cat">
                         <div class="div_prod">
                             <h5>Produto</h5>
-                            <input type="text" class="input_nome" placeholder="Ex.: Cabo de rede">
+                            <input name="nome" type="text" class="input_nome" placeholder="Ex.: Cabo de rede" required>
                         </div>
                         <div class="div_cat">
                             <h5>Categoria</h5>
                             <div class="search_select_box">
-                                <select class="selectpicker" data-live-search="true">
+                                <select name="categoria" class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
                                 <?php
                                     require_once('../config/dbConnect.php');
@@ -104,17 +120,17 @@
                     </div>
                     <div class="desc">
                         <h5>Descrição</h5>
-                        <input type="text" class="input_desc" placeholder="Ex. : Para conexão Wi-Fi">
+                        <input name="descricao" type="text" class="input_desc" placeholder="Ex. : Para conexão Wi-Fi" required>
                     </div>
                     <div class="quant_uni">
                         <div class="div_quant">
                             <h5>Quantidade</h5>
-                            <input type="text" class="input_quant" placeholder="Ex. : 200">
+                            <input name="quantidade" type="text" class="input_quant" placeholder="Ex. : 200" required>
                         </div>
                         <div class="div_uni">
                             <h5>Unidade de Medida</h5>
                             <div class="search_select_box">
-                                <select class="selectpicker" data-live-search="true">
+                                <select name="unidade_medida" class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
                                 <?php
                                     $opcoes_uni_med = "SELECT id, descr FROM uni_med ORDER BY descr ASC";
@@ -135,7 +151,7 @@
                         </div>
                     </div>
                     <div class="div_bot">
-                        <button class="botao_add">Adicionar</button>
+                        <button type="submit" class="botao_add">Adicionar</button>
                     </div>
                 </form>
             </dialog>
@@ -158,16 +174,16 @@
                             ?>
                             <tr class="tabela-body-linha">
                                 <td class="text"><?=$mat['nome']?></td>
-                                <td class="td_btn_edit_switch">
-                                    <a class="botao_detalhes" title="Detalhes">
+                                <td class="td_btns">
+                                    <button class="botao_detalhes" data-id="<?= $mat['id'] ?>" title="Detalhes">
                                         <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    </button>
                                     <button class="botao_editar" data-id="<?= $mat['id'] ?>" title="Editar">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </button>
-                                    <a class="botao_desativar" title="Excluir" >
+                                    <button class="botao_desativar" title="Excluir" >
                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    </button>
                                 </td>
                                 <?php
                                         }
@@ -184,7 +200,42 @@
                 </div>
             </section>
         </div>
-      
+        <dialog class='dialog_detalhes'>
+            <nav>
+                <h3>Informações do Produto</h3>
+                <i class="fa-solid fa-xmark x_detalhes"></i>
+            </nav>
+            <form class="campos3">
+                <div class="prod_cat3">
+                    <div class="div_prod3">
+                        <h5>Produto</h5>
+                        <input type="text" class="input_nome3" readonly>
+                    </div>
+                    <div class="div_cat3">
+                        <h5>Categoria</h5>
+                        <input type="text" class="input_cat3" readonly> 
+                    </div>
+                </div>
+                <div class="desc3">
+                    <h5>Descrição</h5>
+                    <input type="text" class="input_desc3" readonly>
+                </div>
+                <div class="quant_uni3">
+                    <div class="div_quant3">
+                        <h5>Quantidade</h5>
+                        <input type="text" class="input_quant3" readonly>
+                    </div>
+                    <div class="div_uni3">
+                        <h5>Unidade de Medida</h5>
+                        <input type="text" class="input_uni_med3" readonly>
+                    </div>
+                </div>
+                <div class='div_id'>
+                    <h5>ID</h5>
+                    <input type="text" class="input_id" readonly>
+                </div>
+            </form>
+        </dialog>
         <dialog class="dialog_confirm">
             <div class="dialog_conteudo">
                 <div class="div_dialog_mensagem">

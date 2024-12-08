@@ -175,14 +175,9 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-.concl{
-    background-color: #050C9C;
-    padding: 5px;
-    border-radius: 20px;
-    color: white;
-    text-align: center;
+.end {
+    height: 4vh;
 }
-
 @media screen and (max-width: 800px){
     .corpo {
         line-height: 1.2em;
