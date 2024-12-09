@@ -1,13 +1,12 @@
-// controller_relatorio.php
-
+<?php
 require_once('../config/dbConnect.php');
 
 // Função para atualizar os status das reservas
 function atualizarStatusReservas() {
     global $dbh;
 
-    $currentDate = date('Y-m-d');  // data atual no formato Y-m-d
-    $currentTime = date('H:i:s');  // hora atual no formato H:i:s
+    $currentDate = date('Y-m-d');  // Data atual no formato Y-m-d
+    $currentTime = date('H:i:s');  // Hora atual no formato H:i:s
 
     // Passo 1: Selecionar os IDs das reservas a serem atualizadas
     $selectQuery = "
@@ -76,6 +75,4 @@ function obterReservas() {
     $todasInfos = $dbh->query($infos);
     return $todasInfos->fetchAll(PDO::FETCH_ASSOC);
 }
-
-// Chama a função de atualizar status (isso pode ser feito em qualquer momento necessário, como no início da execução)
-atualizarStatusReservas();
+?>

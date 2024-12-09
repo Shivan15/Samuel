@@ -12,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $quantidade = isset($_POST['quantidade']) ? (int)$_POST['quantidade'] : null;
     $unidade_medida = isset($_POST['unidade_medida']) ? (int)$_POST['unidade_medida'] : null;
 
+    // Definir o valor de "stts" como 1 (ativo) caso não tenha sido passado
+    $stts = 1;
+
     // Validar os dados obrigatórios
     if (!$nome || !$categoria || !$descricao || !$quantidade || !$unidade_medida) {
         $_SESSION['error_message'] = "Preencha todos os campos corretamente.";
@@ -21,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Preparar a consulta para inserir no banco de dados
-        $insert = "INSERT INTO material (qtd, id_cat, id_uni_med, nome, descr) 
-                   VALUES (:quantidade, :categoria, :unidade_medida, :nome,  :descricao)";
+        $insert = "INSERT INTO material (qtd, id_cat, id_uni_med, nome, descr, stts) 
+                   VALUES (:quantidade, :categoria, :unidade_medida, :nome,  :descricao, :stts)";
         $stmt = $dbh->prepare($insert);
 
         // Vincular os valores
@@ -31,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
         $stmt->bindParam(':unidade_medida', $unidade_medida, PDO::PARAM_INT);
         $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':stts', $stts, PDO::PARAM_INT);  // Adicionando o campo stts
 
         // Executar a consulta
         if ($stmt->execute()) {

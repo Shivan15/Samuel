@@ -65,10 +65,11 @@ btn_edit.forEach((button) => {
 
       if (produto) {
         // Preenche os campos do modal com os dados do produto
-        document.querySelector('.input_nome2').value = produto.nome;
-        document.querySelector('.input_desc2').value = produto.descr;
-        document.querySelector('.input_quant2').value = produto.qtd;
-        document.querySelector('.botao_edit').dataset.id = idProduto; // Define o ID no botão "Salvar"
+        document.querySelector('.input_nome2').value = produto.material_nome;
+        document.querySelector('.input_desc2').value = produto.material_descr;
+        document.querySelector('.input_quant2').value = produto.quantidade;
+        document.querySelector('.botao_edit').dataset.id = idProduto;
+        document.querySelector('.cat').value = produto.categoria_descr;
       }
 
       // Mostra o modal de edição

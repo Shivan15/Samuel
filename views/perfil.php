@@ -19,27 +19,27 @@
     <sidebar class="sidebar">
         <img src="../public/imgs/bars-solid.svg" alt="" class="menu_sand">
         <nav class="side_items">
-            <a href="inicio.html">
+            <a href="inicio.php">
                 <i class="fa-solid fa-house"></i>
                 <span>Início</span>
             </a>
             <hr>
-            <a href="gerenciamento.html">
+            <a href="gerenciamento.php">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Gerenciamento</span>
             </a>
             <hr>
-            <a href="reservas.html">
+            <a href="reservas.php">
                 <i class="fa-solid fa-table-list"></i>
                 <span>Reservas</span>
             </a>
             <hr>
-            <a href="relatorio.html">
+            <a href="relatorio.php">
                 <i class="fa-solid fa-clipboard"></i>
                 <span>Relatório</span>
             </a>
             <hr>
-            <a href="perfil.html">
+            <a href="perfil.php">
                 <i class="fa-solid fa-circle-user"></i>
                 <span>Perfil</span>
             </a>

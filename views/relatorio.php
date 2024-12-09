@@ -58,6 +58,26 @@
         </div>
         <h1 class="relator">Relatório</h1>
         <h1 class="relat">Relatório</h1>
+        <?php
+        // Verifica e inclui o controlador
+        if (!file_exists('../src/controller/controller_relatorio.php')) {
+            die('Erro: O arquivo controller_relatorio.php não foi encontrado!');
+        }
+
+        require_once('../src/controller/controller_relatorio.php');
+
+        // Testa se a função atualizarStatusReservas existe
+        if (!function_exists('atualizarStatusReservas')) {
+            die('Erro: A função atualizarStatusReservas não está definida!');
+        }
+
+        // Atualiza os status das reservas
+        atualizarStatusReservas();
+
+        // Obtém os dados das reservas
+        $listaInfos = obterReservas();
+        ?>
+
         <section class="tabela">
             <table id="myTable" class="table-striped table-bordered" style="width:100%">
                 <thead>
@@ -75,20 +95,9 @@
                 </thead>
                 <tbody>
                     <?php
-                    require_once('controller_relatorio.php'); // Incluindo o controlador
-
-                    // Chama a função para atualizar o status
-                    atualizarStatusReservas();
-
-                    // Chama a função para obter as reservas
-                    $listaInfos = obterReservas();
-
                     if (count($listaInfos) > 0) {
                         foreach ($listaInfos as $info) {
-                            // Ajuste do texto de status
-                            $status = $info['stts'];  // O status já é retornado corretamente
-
-                            // Formatar a data
+                            $status = $info['stts'];
                             $data = (new DateTime($info['dt']))->format('d/m/Y');
                     ?>
                     <tr>
@@ -109,8 +118,6 @@
                 </tbody>
             </table>
         </section>
-
-
         <div class="end"></div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

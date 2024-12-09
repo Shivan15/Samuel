@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas</title>
-    <link rel="stylesheet" href="../public/css/reservas.css">
+    <link rel="stylesheet" href="../public/css/reservas2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,49 +13,14 @@
 
 <body>
     <div class="upbar">
-        <img class="img-senac" src="../public/imgs/senac_logo_branco.png" alt="">
+        <img class="img-senac" src="/public/imgs/senac_logo_branco.png" alt="">
     </div>
     <div class="downbar">
     </div>
     <div class="sidebar">
         <i class="fa-solid fa-bars"></i>
-        <nav class="side_items">
-            <a href="inicio.php">
-                <i class="fa-solid fa-house"></i>
-                <span>Início</span>
-            </a>
-            <hr>
-            <a href="gerenciamento.php">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Gerenciamento</span>
-            </a>
-            <hr>
-            <a href="reservas.php">
-                <i class="fa-solid fa-table-list"></i>
-                <span>Reservas</span>
-            </a>
-            <hr>
-            <a href="relatorio.php">
-                <i class="fa-solid fa-clipboard"></i>
-                <span>Relatório</span>
-            </a>
-            <hr>
-            <a href="perfil.php">
-                <i class="fa-solid fa-circle-user"></i>
-                <span>Perfil</span>
-            </a>
-        </nav>
     </div>
     <main>
-        <div class="caminho">
-            <a href="inicio.php" class="home">Início/</a>
-            <a href="reservas.php" class="reservas">Reservas/</a>
-        </div>
-        <div class="pesquisa">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisar por evento" class="campo-pesq">
-            <button class="botao-reserva"><i class="fa-solid fa-plus"></i>Nova reserva</button>
-        </div>
         <div class="container">
             <div class="calendario">
                 <div class="esquerda">
@@ -141,7 +106,7 @@
                             id="nome-evento">
                     </div>
                     <div class="add-event-input">
-                        <label for="responsavel-evento" class="label-input">Solicitante <i
+                        <label for="responsavel-evento" class="label-input">Responsável <i
                                 class="fa-solid fa-asterisk"></i></label>
                         <input type="text" placeholder="Ex.: Sebastião Gomes" class="event-owner"
                             id="responsavel-evento">
@@ -149,16 +114,25 @@
                     <div class="add-event-input">
                         <label for="data-evento" class="label-input">Data do evento <i
                                 class="fa-solid fa-asterisk"></i></label>
-                        <input type="date" placeholder="Ex.: 01/01/2025" class="event-date" id="data-evento">
+                        <input type="text" placeholder="Ex.: 01/01/2025" class="event-date" id="data-evento">
                     </div>
                     <div class="add-event-input">
-                        <label for="desc-evento" class="label-input">Email <i
-                            class="fa-solid fa-asterisk"></i></label>
-                        <input type="text" placeholder="Ex.: Sebastiao2024@senac.com" class="event-email" id="email">
-                    </div>
-                    <div class="add-event-input desc">
-                        <label for="desc-evento" class="label-input">Descrição</label>
+                        <label for="desc-evento" class="label-input">Descrição </label>
                         <input type="text" placeholder="Descrição do evento" class="event-desc" id="desc-evento">
+                    </div>
+                    <div class="add-event-input">
+                        <label for="local-evento" class="label-input">Local <i class="fa-solid fa-asterisk"></i></label>
+                        <input type="text" placeholder="Ex.: Sala 07" class="event-place" id="local-evento">
+                    </div>
+                    <div class="add-event-input">
+                        <label for="status-evento" class="label-input">Status <i
+                                class="fa-solid fa-asterisk"></i></label>
+                        <select class="event-status" id="status-evento">
+                            <option disabled selected>Selecione:</option>
+                            <option value="1">Em andamento</option>
+                            <option value="2">Concluído</option>
+                            <option value="3">Não iniciado</option>
+                        </select>
                     </div>
                     <div class="add-event-input">
                         <label for="hora-inicio-evento" class="label-input">De: <i

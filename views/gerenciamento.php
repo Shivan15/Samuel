@@ -36,7 +36,7 @@
                 <span>Gerenciamento</span>
             </a>
             <hr>
-            <a href="reservas.html">
+            <a href="reservas.php">
                 <i class="fa-solid fa-table-list"></i>
                 <span>Reservas</span>
             </a>
@@ -60,7 +60,7 @@
         <div class="conteudo-botaoadd-tabela">
             <section class="section1">
                 <div class="alert_div">
-                <?php
+                    <?php
                     session_start(); // Iniciar a sessão para acessar as variáveis de sessão
                     // Exibir a mensagem de erro se houver
                     if (isset($_SESSION['error_message'])) {
@@ -72,9 +72,9 @@
                         echo "<p id='message' class='alert alert-success' data-type='success'> {$_SESSION['success_message']} </p>";
                         unset($_SESSION['success_message']); // Limpar a mensagem após exibi-la
                     }
-                ?>
+                    ?>
                 </div>
-            
+
                 <button class="add_prod">
                     <i class="ri-add-large-line"></i>
                     Adicionar Produto
@@ -96,22 +96,22 @@
                             <div class="search_select_box">
                                 <select name="categoria" class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
-                                <?php
+                                    <?php
                                     require_once('../config/dbConnect.php');
                                     $opcoes_categoria = "SELECT id, descr FROM categoria ORDER BY descr ASC";
                                     $result_categoria = $dbh->query($opcoes_categoria);
                                     $listaOpcoes_categoria = $result_categoria->fetchAll(PDO::FETCH_ASSOC);
-                                    if(count($listaOpcoes_categoria) > 0){
-                                        foreach($listaOpcoes_categoria as $opcao_categoria){
+                                    if (count($listaOpcoes_categoria) > 0) {
+                                        foreach ($listaOpcoes_categoria as $opcao_categoria) {
 
-                                ?>
+                                    ?>
 
 
-                                    <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
-                                    <?php         
+                                            <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr'] ?> </option>
+                                    <?php
                                         }
-                                    }else{
-                                        echo'Nenhuma categoria encontrada';
+                                    } else {
+                                        echo 'Nenhuma categoria encontrada';
                                     }
                                     ?>
                                 </select>
@@ -132,17 +132,17 @@
                             <div class="search_select_box">
                                 <select name="unidade_medida" class="selectpicker" data-live-search="true">
                                     <option disabled selected>Pesquisar</option>
-                                <?php
+                                    <?php
                                     $opcoes_uni_med = "SELECT id, descr FROM uni_med ORDER BY descr ASC";
                                     $result_uni_med = $dbh->query($opcoes_uni_med);
                                     $listaOpcoes_uni_med = $result_uni_med->fetchAll(PDO::FETCH_ASSOC);
-                                    if(count($listaOpcoes_uni_med) > 0){
-                                        foreach($listaOpcoes_uni_med as $opcao_uni_med){
-                                ?>  
-                                    <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
+                                    if (count($listaOpcoes_uni_med) > 0) {
+                                        foreach ($listaOpcoes_uni_med as $opcao_uni_med) {
+                                    ?>
+                                            <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
                                     <?php
                                         }
-                                    }else{
+                                    } else {
                                         echo 'Nenhuma unidade de medida encontrada';
                                     }
                                     ?>
@@ -159,42 +159,42 @@
                 <div class="tabela-g">
                     <table id="minhaTabela" class="table table-responsive table-striped table-bordered tabela-gerenciamento">
                         <thead>
-                                <tr class="table-head">
-                                    <th>Itens</th>
-                                    <th>Ações</th>
-                                </tr>
+                            <tr class="table-head">
+                                <th>Itens</th>
+                                <th>Ações</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $materiais = 'SELECT nome, id FROM material ORDER BY descr ASC';
-                                $todosMat = $dbh->query($materiais);
-                                $listaMat = $todosMat->fetchAll(PDO::FETCH_ASSOC);
-                                if (count($listaMat) > 0){
-                                    foreach($listaMat as $mat){ 
+                            $materiais = 'SELECT nome, id FROM material ORDER BY descr ASC';
+                            $todosMat = $dbh->query($materiais);
+                            $listaMat = $todosMat->fetchAll(PDO::FETCH_ASSOC);
+                            if (count($listaMat) > 0) {
+                                foreach ($listaMat as $mat) {
                             ?>
-                            <tr class="tabela-body-linha">
-                                <td class="text"><?=$mat['nome']?></td>
-                                <td class="td_btns">
-                                    <button class="botao_detalhes" data-id="<?= $mat['id'] ?>" title="Detalhes">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                    <button class="botao_editar" data-id="<?= $mat['id'] ?>" title="Editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="botao_desativar" title="Excluir" >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </td>
+                                    <tr class="tabela-body-linha">
+                                        <td class="text"><?= $mat['nome'] ?></td>
+                                        <td class="td_btns">
+                                            <button class="botao_detalhes" data-id="<?= $mat['id'] ?>" title="Detalhes">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                            <button class="botao_editar" data-id="<?= $mat['id'] ?>" title="Editar">
+                                                <i class="fa-regular fa-pen-to-square"></i>
+                                            </button>
+                                            <button class="botao_desativar" title="Excluir">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
                                 <?php
-                                        }
-                                    }else{
-                                        echo'Nenhum material encontrado';
-                                    }
+                                }
+                            } else {
+                                echo 'Nenhum material encontrado';
+                            }
                                 ?>
-                            </tr>
+                                    </tr>
                         </tbody>
                         <tfoot>
-                            
+
                         </tfoot>
                     </table>
                 </div>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="div_cat3">
                         <h5>Categoria</h5>
-                        <input type="text" class="input_cat3" readonly> 
+                        <input type="text" class="input_cat3" readonly>
                     </div>
                 </div>
                 <div class="desc3">
@@ -262,15 +262,52 @@
                         <h5>Categoria</h5>
                         <div class="search_select_box">
                             <select class="selectpicker cat" data-live-search="true">
-                            <?php
-                                if(count($listaOpcoes_categoria) > 0){
-                                    foreach($listaOpcoes_categoria as $opcao_categoria){
-                            ?>
-                                <option value="<?= $opcao_categoria['id'] ?>"> <?= $opcao_categoria['descr']?> </option>   
-                                <?php         
+                                <?php
+                                $query = $dbh->prepare("SELECT 
+                                        m.id AS material_id,
+                                        m.qtd AS quantidade,
+                                        m.descr AS material_descr,
+                                        m.nome AS material_nome,
+                                        um.id AS unidade_medida_id,
+                                        um.descr AS unidade_medida_descr,
+                                        c.id AS categoria_id,
+                                        c.descr AS categoria_descr
+                                    FROM 
+                                        material m
+                                    JOIN 
+                                        uni_med um ON m.id_uni_med = um.id
+                                    JOIN 
+                                        categoria c ON m.id_cat = c.id 
+                                    WHERE m.id = :id");
+                                $query->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+                                $query->execute();
+                                $produto = $query->fetch(PDO::FETCH_ASSOC);
+
+                                if (count($listaOpcoes_categoria) > 0) {
+                                    // Supondo que você tenha uma variável $categoria_cadastrada que contém o ID da categoria do produto
+                                    $categoria_cadastrada = $produto['categoria_id'];
+                                    
+                                    //var_dump($categoria_cadastrada);// A categoria cadastrada para o produto
+                                   echo "<script> 
+                                        const btn_edit = document.querySelectorAll(`.botao_editar`);
+                                        const idProduto = button.dataset.id;
+                                   </script>";
+                                    echo "<option value='" . $produto['categoria_id'] . "' selected>" . $produto['categoria_descr'] . "</option>";
+
+
+                                    foreach ($listaOpcoes_categoria as $opcao_categoria) {
+                                        // Verificando se a categoria é a cadastrada para o produto
+                                        $selected = ($opcao_categoria['id'] == $categoria_cadastrada) ? 'selected' : '';
+                                        
+                                ?>
+
+                                        <option value="<?= $opcao_categoria['id'] ?>">
+                                            <?= $opcao_categoria['descr'] ?>
+                                        </option>
+                                <?php
                                     }
-                                }else{
-                                    echo'Nenhuma categoria encontrada';
+                                } else {
+                                    echo 'Nenhuma categoria encontrada';
                                 }
                                 ?>
                             </select>
@@ -290,14 +327,14 @@
                         <h5>Unidade de Medida</h5>
                         <div class="search_select_box">
                             <select class="selectpicker u_m" data-live-search="true">
-                            <?php
-                                if(count($listaOpcoes_uni_med) > 0){
-                                    foreach($listaOpcoes_uni_med as $opcao_uni_med){
-                            ?>  
-                                <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
+                                <?php
+                                if (count($listaOpcoes_uni_med) > 0) {
+                                    foreach ($listaOpcoes_uni_med as $opcao_uni_med) {
+                                ?>
+                                        <option value="<?= $opcao_uni_med['id'] ?>"><?= $opcao_uni_med['descr'] ?></option>
                                 <?php
                                     }
-                                }else{
+                                } else {
                                     echo 'Nenhuma unidade de medida encontrada';
                                 }
                                 ?>
@@ -327,44 +364,44 @@
     <!-- Incluir o JS do DataTables -->
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="../public/js/gerenciamento.js"></script>
-    
 
 
 
-<!-- Ativar o DataTable -->
-<script>
-    $(document).ready(function() {
-        $('#minhaTabela').DataTable({
-            language: {
-                "sEmptyTable": "Nenhum dado disponível na tabela",
-                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-                "sInfoFiltered": "(filtrado de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Pesquisar:",
-                "sLengthMenu": "Exibir _MENU_ registros por página",
-                "sUrl": "",
-                "sInfoThousands": ".",
-                "sLoadingRecords": "Carregando...",
-                "oPaginate": {
-                    "sFirst": "Primeira",
-                    "sLast": "Última",
-                    "sNext": "Próxima",
-                    "sPrevious": "Anterior"
+
+    <!-- Ativar o DataTable -->
+    <script>
+        $(document).ready(function() {
+            $('#minhaTabela').DataTable({
+                language: {
+                    "sEmptyTable": "Nenhum dado disponível na tabela",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(filtrado de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Pesquisar:",
+                    "sLengthMenu": "Exibir _MENU_ registros por página",
+                    "sUrl": "",
+                    "sInfoThousands": ".",
+                    "sLoadingRecords": "Carregando...",
+                    "oPaginate": {
+                        "sFirst": "Primeira",
+                        "sLast": "Última",
+                        "sNext": "Próxima",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": ativar para ordenar coluna de forma ascendente",
+                        "sSortDescending": ": ativar para ordenar coluna de forma descendente"
+                    }
                 },
-                "oAria": {
-                    "sSortAscending": ": ativar para ordenar coluna de forma ascendente",
-                    "sSortDescending": ": ativar para ordenar coluna de forma descendente"
-                }
-            },
                 scrollCollapse: true,
                 scrollY: '500px',
 
 
 
+            });
         });
-    });
-</script>
+    </script>
 </body>
 
 </html>
