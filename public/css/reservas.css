@@ -599,6 +599,10 @@ main {
     width: 15vw;
 }
 
+.desc {
+    width: 38vw; 
+}
+
 .add-event-input input {
     margin: 5%;
     width: 100%;
@@ -606,6 +610,13 @@ main {
     border: 1px solid #818181;
     border-radius: 15px;
     padding: 3%;
+}
+
+.desc input{
+    margin: 1%;
+    padding: 1%;
+    margin-left: 2%;
+
 }
 
 .add-event-input select {
@@ -805,5 +816,8 @@ main {
 
     .add-reserva .confirma-reserva {
         width: 40vw;
+    }
+    .desc{
+        width: 100%;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 $user = "root"; //variavel em PHP usa $
-$pass = "Samuel@0";
+$pass = "@A09a094";
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=testes1', $user, $pass);
+    $dbh = new PDO('mysql:host=localhost;dbname=laboratorio_g', $user, $pass);
     echo "";
 } catch (PDOException $e) {
     echo "";
