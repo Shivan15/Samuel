@@ -9,21 +9,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($cpf) && !empty($senha)) {
         try {
             // Preparar a query de inserção
-            $sql = "SELECT nome, id from usuario WHERE senha = :senha and cpf = :cpf and stts = '1'";
+            $sql = "SELECT nome, id, senha from usuario WHERE cpf = :cpf and stts = '1'";
             $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':senha', $senha);
             $stmt->bindValue(':cpf', $cpf);
-
 
             // Executar a query
             if ($stmt->execute()) {
                 if ($stmt->rowCount() > 0) { // Verifica se algum usuário foi encontrado
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    session_start();
-                    $_SESSION["Nome_user"] = $result[0]['nome'];
-                    $_SESSION["id_user"] = $result[0]['id'];
-                    header('Location: ../../views/inicio.php');
-                    exit; // É uma boa prática chamar exit após header
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    if (password_verify($senha, $result['senha'])) {
+                        session_start();
+                        $_SESSION["Nome_user"] = $result['nome'];
+                        $_SESSION["id_user"] = $result['id'];
+                        header('Location: ../../views/inicio.php');
+                        exit; // É uma boa prática chamar exit após header
+                    } else {
+                        header('Location: ../../views/login.php?erro=SenhaIncorreta');
+                        exit;
+                    }
                 } else {
                     header('Location: ../../views/login.php?erro=NotFound');
                     exit;

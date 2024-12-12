@@ -43,7 +43,7 @@
             <label for="email">Endereço de E-mail:</label>
             <input type="email" id="email" name="email" required>
             <button type="submit">Confirmar</button>
-            <a href="login.html" class="back-to-login">Voltar para login</a>
+            <a href="login.php" class="back-to-login">Voltar para login</a>
         </form>
     </div>
 </body>

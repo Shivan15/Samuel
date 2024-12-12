@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
+
 /* Reset básico para margem e fonte */
+
 
 * {
     font-family: 'Lexend';
 }
 
+
 body {
     margin: 0;
     line-height: initial;
+}
+.menu_sand{
+    display: none;
+}
+
+
+.campo {
+    margin-left: 10vw;
+    margin-top: 0vh;
 }
 
 /* Estilo da barra lateral */
@@ -28,6 +40,7 @@ body {
     z-index: 1; /* Garante que a barra lateral fique atrás do conteúdo principal */
     box-sizing: border-box;
 }
+
 
 .upbar {
     position: fixed;
@@ -57,18 +70,68 @@ body {
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
     z-index: 1; /* Garante que a barra lateral fique atrás do conteúdo principal */
 }
+.img-senac{
+    display: flex;
+    flex-direction: column;
+    margin-left: 14.4%;
+    margin-top: 1%;
+    width: 6%;
+    height: 65%;
+}
+
+
+/* Estilo dos links na barra lateral */
+.side_items a {
+    display: block;
+    margin: 3.6vh; /* Espaço vertical entre os ícones */
+    color: #003282; /* Cor do ícone */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 5vh; /* Tamanho dos ícones */
+    text-align: center; /* Alinha o texto ao centro */
+    transition: color 0.3s; /* Transição suave para a cor ao passar o mouse */
+}
+
+
+.side_items a span {
+    display: block;
+    margin-top: 8px; /* Espaço entre o ícone e o texto */
+    font-size: 14px; /* Tamanho do texto */
+    color: #003282; /* Cor do texto */
+}
+
+
+/* Estilo dos ícones ao passar o mouse */
+.side_items a:hover {
+    color: orange; /* Cor do ícone ao passar o mouse */
+}
+
+
+.side_items a:hover span {
+    color: orange; /* Cor do texto ao passar o mouse */
+}
+
+
+/* Divisórias entre os ícones */
+.side_items hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ddd; /* Cor e espessura da divisória */
+    margin: 20px 0; /* Espaço vertical ao redor da divisória */
+}
 
 .div_nome_user{
     position: absolute;
     left: 15%;
     top: 14vh;
     z-index: 999;
+    width: 15vw;
 }
 
 .nome_exibir{
     font-size: 20px;
     color: #003282;
     z-index: 9999;
+    width: 100%;
 }
 
 .quadrado {
@@ -76,9 +139,14 @@ body {
     width: 80vw;
     background: linear-gradient(to right, rgba(0, 50, 130, 0.7), rgba(0, 119, 255, 0.7)), url('imagens/Design sem nome.png') no-repeat center center; /* Gradiente azul com imagem */
     background-size: cover; /* Faz a imagem cobrir todo o elemento */
-    margin-top: 10.5%;
-    margin-left: 15%;
     display: flex;
+    justify-self: center;
+    border-radius: 15px;
+    margin-top: 22vh ;
+}
+.img-impressao{ /*ajustes do banner*/
+    height: 100%;
+    width: 100%;
     border-radius: 15px;
 }
 .logo-senac {
@@ -95,139 +163,136 @@ body {
 .quadrado:hover .logo-senac {
     opacity: 1; /* Torna o logo visível ao passar o mouse */
 }
-.img-impressao{
-    height: 100%;
-    width: 100%;
-   border-radius: 15px;
+.quadrado1-2{
+    display: flex;
+    flex-direction: row; 
+    margin-left: 10vh; 
+    width: 89%;
+}
+.quadrado-1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0;
+    width: 50%;
+    height: 30vh;
+    margin-top: 6vh;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #050C9C;
+    box-sizing: border-box;
 }
 
-.quadrado-p {
-    
-    background-image: url("../img/impressora_img.png");
-    background-size: cover;
-    height: 37vh;
-    width: 35vw;
-    background-color: red;
-    margin-top: 3%;
-    margin-left: 15%;
-    display: flex;
-    border-radius: 15px;
-}
-.quadrado-L{
-    height: 37vh;
-    width: 35vw;
-    background-color: #fbbb81;
-    margin-top: -18.25%;
-    margin-left: 60%;
-    display: flex;
-    border-radius: 15px;
-    position: relative;
-}
-.adc-impressora{
-    display: flex;
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: underline;
-    color: white;
-    margin-left: 70%;
-    margin-top: 46%;
-}
-.adc-atalho{
-    display: flex;
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: underline;
-    color: white;
-    margin-left: 66%;
-    margin-top: 46%;
-}
-.img-impressora{
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
 
-.img-senac{
+.quadrado-2, .imagem-reduzida{
     display: flex;
     flex-direction: column;
-    margin-left: 14.4%;
-    margin-top: 1%;
-    width: 6%;
-    height: 65%;
+    border-radius: 0;
+    width: 80%;
+    height: 30vh;
+    margin-top: 6vh;
+    margin-top: auto;
+    border-radius: 15px;
+    justify-content: flex-end;
+    
 }
-
-/* Estilo dos links na barra lateral */
-.side_items a {
-    display: block;
-    margin: 3.6vh; /* Espaço vertical entre os ícones */
-    color: #003282; /* Cor do ícone */
-    text-decoration: none; /* Remove o sublinhado */
-    font-size: 5vh; /* Tamanho dos ícones */
-    text-align: center; /* Alinha o texto ao centro */
-    transition: color 0.3s; /* Transição suave para a cor ao passar o mouse */
+.imagem-reduzida{
+    align-self: flex-end;
 }
-
-.side_items a span {
-    display: block;
-    margin-top: 8px; /* Espaço entre o ícone e o texto */
-    font-size: 14px; /* Tamanho do texto */
-    color: #003282; /* Cor do texto */
-}
-
-/* Estilo dos ícones ao passar o mouse */
-.side_items a:hover {
-    color: orange; /* Cor do ícone ao passar o mouse */
-}
-
-.side_items a:hover span {
-    color: orange; /* Cor do texto ao passar o mouse */
-}
-
-/* Divisórias entre os ícones */
-.side_items hr {
+.evento-data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    border: 0;
-    border-top: 1px solid #ddd; /* Cor e espessura da divisória */
-    margin: 20px 0; /* Espaço vertical ao redor da divisória */
+    height: 3vh;
+    background-color: #003282;
 }
-.btn-icon {
-    position: absolute;
-    bottom: 10px; /* Ajuste a distância do fundo conforme necessário */
-    right: 10px; /* Ajuste a distância da borda direita conforme necessário */
-    background-color: orange; /* Cor de fundo do botão */
-    border: none;
-    border-radius: 50%; /* Botão redondo */
-    width: 50px; /* Largura do botão */
-    height: 50px; /* Altura do botão */
+p, .label-i{
+    padding: 2%;
+}
+p{
+    font-size: 16px;
+    color: white;
+}
+.label-i{
+    font-size: 14px;
+    color: white;
+}
+.resumo-dt-evento{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.dt1-evento1, .dt2-evento2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 13.2vh;
+    border-top: 2px solid #050C9C;
+}
+.dt-1, .dt-2{
+    width: 10vw;
+    height: 13.15vh;
+    border-right: 2px solid #050C9C;
+}
+h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o botão */
-    cursor: pointer; /* Mãozinha ao passar o mouse */
-    color: white; /* Cor do ícone */
-    font-size: 24px; /* Tamanho do ícone */
-    transition: background-color 0.3s, color 0.3s; /* Transição suave para cor */
+    font-size: 40px;
+    font-weight: 300;
+    color: #050C9C;
 }
-.btn-icon:hover {
-    background-color: #ff6600; /* Cor do botão ao passar o mouse */
-    color: #fff; /* Cor do ícone ao passar o mouse */
+.evento-1, .evento-2{
+    display: flex;
+    width: 73%;
+    height: 100%;
 }
-.quadrado-p {
-    position: relative; /* Necessário para posicionar o botão dentro do quadrado-p */
+.conteudo{
+    display: flex;
+    margin: 6% 0 0 8%;
+    height: 6vh;
+    flex-direction: column;
+    gap: 12px;
+    border-left: 4px solid #00D1FF;
+    width: 40%;
+}
+.conteudo h4, .conteudo h5{
+    margin: 0;
 }
 
-/* Estilo do conteúdo principal */
-main {
-    margin-left: 200px; /* Ajusta a margem esquerda para evitar sobreposição com a barra lateral */
-    padding: 20px; /* Espaçamento interno do conteúdo principal */
+h4{
+    font-weight: 200;
+    font-size: 16px;
+    padding-left: 5%;
 }
-.menu_sand{
-    display: none;
+h5{
+    font-weight: 300;
+    font-size: 18px;
+    padding-left: 5%;
+}
+.icone-expandir{
+    display: flex;
+    color: #C4C4C4;
+    align-self: flex-end;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    font-size: 18px;
 }
 
-@media screen and (max-width: 800px){
+
+@media screen and (max-width: 430px){
     body {
-        line-height: 1.2em;
+        line-height: 1.1em;
+    }
+    
+    .campo {
+        margin-left: -5vw;
+        margin-top: 5vh;
+        margin-right: 10vw;
+        margin-bottom: 20%;
     }
     .side_items{
         flex-direction: column;
@@ -248,38 +313,108 @@ main {
     .quadrado{
         height: 10vh;
         width: 90vw;
-        margin-left: 5%;
+        margin-left: 15%;
         margin-top: 7%;
     }
-    .logo-senac{
-        height: 8vh; /* Ajuste a altura do logo conforme necessário */
-        width: 21vw; /* Mantém a proporção do logo */
-        position: absolute;
-        top: 29.5%; /* Centraliza verticalmente */
-        left: 20%; /* Centraliza horizontalmente */
-        transform: translate(-50%, -50%); /* Ajusta a posição para que o centro do logo esteja no centro do quadrado */
-        opacity: 0; /* Inicialmente invisível */
-        transition: opacity 0.3s ease-in-out; /* Transição suave para o efeito de hover */
-        z-index: 1; /* Garante que o logo apareça sobre o gradiente */
+    
+    .dt1-evento1, .dt2-evento2{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 10vh;
+        border-top: 2px solid #050C9C;
+        
     }
-    .quadrado-p{
+    .icone-expandir{
+        display: flex;
+        color: #C4C4C4;
+        align-self: flex-end;
+        margin-bottom: 2%;
+        margin-right: 2%;
+        font-size: 18px;
+        margin-left: 22%;
+      
+    }
+    .dt-1, .dt-2{
+        width: 20vw;
+        height: 12vh;
+        border-right: 2px solid #050C9C;
+        align-content: center;
+    }
+    .evento-1, .evento-2{
+        display: flex;
+        width: 73%;
+        height: 100%;
+        margin-left: -3%;
+    }
+    .evento2{
+        display: none;
+    }
+    .evento-2{
+        gap:25%;
+    }
+    .conteudo{
+        width: 100%;
+    }
+    .quadrado-1{
         height: 25vh;
-        width: 90vw;
+        width: 100%;
+        right: 20vh;
         margin-top: 8%;
-        margin-left: 5%;
+        margin-left: 4%;
     }
+    .quadrado1-2{
+        display: flex;
+        flex-direction: column; 
+        margin-left: 2vh;
+        width: 100%;
+    }
+    .quadrado-2, .imagem-reduzida{
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        width: 100%;
+        margin-top: 3%;
+        margin-left: 4%;
+        gap: 0px;
+    }
+    .resumo-dt-evento{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 30%;
+    }
+
+    .img-impressao{ /*ajustes do banner*/
+        width: 100%;
+        border-radius: 15px;
+    }
+   
+
     .img-senac{
         margin-left: 9%;
         margin-top: 3.5%;
         width: 21vw;
         height: 7vh;
+        right: 1%;
     }
-    .quadrado-L{
-        height: 25vh;
-        width: 90vw;
-        margin-left: 5%;
-        margin-top: 3.5%;
+    .logo-senac{
+        height: 7vh; /* Ajuste a altura do logo conforme necessário */
+        width: 21vw; /* Mantém a proporção do logo */
+        position: absolute;
+        left: 20%; /* Centraliza horizontalmente */
+        transform: translate(-50%, -50%); /* Ajusta a posição para que o centro do logo esteja no centro do quadrado */
+        opacity: 0.4; /* Inicialmente invisível */
+        transition: opacity 0.3s ease-in-out; /* Transição suave para o efeito de hover */
+        z-index: 1; /* Garante que o logo apareça sobre o gradiente */
+       margin-top: -15%;
     }
+    .logo-senac:houver{
+    opacity: 1;
+    }
+    
     .adc-impressora{
         margin-left: 55%;
         margin-top: 39%;
@@ -289,4 +424,3 @@ main {
         margin-top: 39%;
     }
 }
-

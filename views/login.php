@@ -50,14 +50,14 @@
                 ?>
             </div>
             <button class="entrar" type="submit">ENTRAR</button>
-            <a class="esq-senha" href="redefinir_senha.html">Esqueceu a senha?</a>
+            <a class="esq-senha" href="redefinir_senha.php">Esqueceu a senha?</a>
             <a class="cadastrar" href="cadastro.php">Cadastrar-se</a>
             <div class="menu">
                 <hr>
                 <p>ou</p>
                 <hr>
             </div>
-            <a class="horarios" type="submit">VISUALIZAR HORÁRIOS</a>
+            <a href="reservas_solicitante.html" class="horarios" type="submit">VISUALIZAR HORÁRIOS</a>
         </form> 
     </main>
     <div class="triangulo-principal"></div>

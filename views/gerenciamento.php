@@ -288,11 +288,11 @@
                                     $categoria_cadastrada = $produto['categoria_id'];
                                     
                                     //var_dump($categoria_cadastrada);// A categoria cadastrada para o produto
-                                   echo "<script> 
+                                    /*echo "<script> 
                                         const btn_edit = document.querySelectorAll(`.botao_editar`);
                                         const idProduto = button.dataset.id;
                                    </script>";
-                                    echo "<option value='" . $produto['categoria_id'] . "' selected>" . $produto['categoria_descr'] . "</option>";
+                                    echo "<option value='" . $produto['categoria_id'] . "' selected>" . $produto['categoria_descr'] . "</option>";*/
 
 
                                     foreach ($listaOpcoes_categoria as $opcao_categoria) {

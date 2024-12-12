@@ -2,7 +2,7 @@
 $user = "root"; //variavel em PHP usa $
 $pass = "";
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=testes1', $user, $pass);
+    $dbh = new PDO('mysql:host=localhost;dbname=labmaker', $user, $pass);
     echo "";
 } catch (PDOException $e) {
     echo "";
